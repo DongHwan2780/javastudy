@@ -43,6 +43,78 @@ public class MainClass
     System.out.println(arr[2]);
   }
   
+  public static void method2()
+  {
+    /*
+     *  배열 초기화
+     *  1. 배열을 선언할 때 초기화 값들을 전달할 수 있다.
+     *  2. 형식
+     *    1) int[] 배열이름 = new int[] {값1, 값2, ...}
+     *    2) int[] 배열이름 = {값1, 값2, ...}
+     * 
+     * */
+    
+    // 배열 선언 및 초기화
+    int[] iArr = new int[] {10, 20, 30, 40, 50};
+    int[] iArr2 = {10, 20, 30, 40, 50};
+    
+    for(int i = 0; i < 5; i++)
+       System.out.println(iArr[i]);
+    
+    for(int i = 0; i < 5; i++)
+      System.out.println(iArr2[i]);
+  }
+  
+  public static void method3()
+  {
+    /*
+     *  배열 길이
+     *  1. 배열 요소의 개수를 의미한다.
+     *  2. 배열이 생성된 이후에는 수정할 수 없다.
+     *  3. 배열 길이 필드값
+     *    배열이름.length
+     * */
+    
+    int[] arr = {10, 20, 30, 40, 50};
+    System.out.println(arr.length);
+    
+  }
+  
+  public static void method4()
+  {
+    /*
+     *  배열의 길이를 늘이는 방법
+     *  1. 새로운 배열을 만든다.
+     *  2. 기존 배열 요소를 모두 옮긴다.
+     *  3. 새로운 배열의 참조값을 가져온다.
+     * 
+     * */
+    
+    int[] a = new int[] {10, 20, 30};
+    int[] b = new int[10];
+    
+    System.arraycopy(a, 0, b, 0, a.length);
+    
+    a = b;
+    
+    for(int i = 0; i < a.length; i++)
+      System.out.println(a[i]);
+  }
+  
+  
+  public static void method5()
+  {
+    // advanced for
+    // for(변수 : 배열)
+    
+    int[] arr = new int[] {10, 20, 30, 40, 50};
+    
+    for(int number : arr)
+      System.out.println(number + 1);
+    
+    for(int number : arr)
+      System.out.println(number);
+  }
   
   public static void main(String[] args)
   {
@@ -52,8 +124,13 @@ public class MainClass
     
     for(int i = 0; i < s.length(); i++)
       System.out.println(s.charAt(i));
+      
     */    
-    method1();
+    //method1();
+    //method2();
+    //method3();
+    method4();
+    method5();
   }
   
 }
