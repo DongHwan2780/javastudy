@@ -16,13 +16,13 @@ public class MainClass
 
     System.out.println();
 
-    bus.off(0);
-    bus.off(1);
+    //bus.off(0);
+    //bus.off(1);
     
-    bus.on(new Woman("x"));
-    bus.on(new Woman("z"));
+    //bus.on(new Woman("x"));
+    //bus.on(new Woman("z"));
     
-    bus.info();
+    //bus.info();
    }
 
 }

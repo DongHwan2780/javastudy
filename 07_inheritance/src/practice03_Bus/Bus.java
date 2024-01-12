@@ -2,12 +2,14 @@ package practice03_Bus;
 
 public class Bus
 {
-  private Person[] seats = new Person[10];
+  private Seat[] seats;
   private int idx;
   
   public Bus()
   {
-
+     seats = new Seat[25];
+     for(int i = 0; i < seats.length; i++)
+       seats[i] = new Seat();
   }
   
   public void on(Person person)
@@ -18,32 +20,22 @@ public class Bus
       return;
     }
     
-    if(idx != 0)
-    {      
-      for(int i = 0; i < seats.length; i++)
-      {
-        if(seats[i] == null)
-        {
-          seats[i] = person;
-          return;
-        }
-      }
-    }
-    else
-      seats[idx++] = person; 
+
+     seats[idx++].sit(person); 
   }
   
   public void off(int idx)
   {
     seats[idx] = null;
+    this.idx--;
   }
   
   public void info()
   {
     for(int i = 0; i < seats.length; i++)
     {
-      if(seats[i] != null)
-        seats[i].ShowName();
+      if(seats[i].getPerson() != null)
+        seats[i].showName();
       else
         System.out.println("빈자리");
     }
