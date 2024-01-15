@@ -26,7 +26,7 @@ public class Bus
   
   public void off(int idx)
   {
-    seats[idx] = null;
+    seats[idx].setPerson(null);
     this.idx--;
   }
   
