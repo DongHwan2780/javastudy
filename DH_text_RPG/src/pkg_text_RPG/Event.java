@@ -1,5 +1,7 @@
 package pkg_text_RPG;
 
+import java.util.Scanner;
+
 public class Event
 {  
   public void levelUp(Player player)
@@ -34,6 +36,16 @@ public class Event
   }
   
   public void battleGroup(Player player, GroupMonster grmonster)
+  {
+    
+  }
+  
+  public void gameStart(Scanner sc)
+  {
+
+  }
+  
+  public void dungeon()
   {
     
   }

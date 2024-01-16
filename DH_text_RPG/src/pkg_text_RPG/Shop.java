@@ -1,5 +1,7 @@
 package pkg_text_RPG;
 
+import java.util.Scanner;
+
 public class Shop
 {  
   public Shop()
@@ -7,9 +9,10 @@ public class Shop
     // TODO Auto-generated constructor stub
   }
   
-  public Shop(int shopNum)
+  public Shop(Scanner sc)
   {
-    Shop shop;
+    int shopNum;
+    shopNum = sc.nextInt();
     
     if(shopNum < 0 || shopNum > 3)
     {
@@ -21,11 +24,11 @@ public class Shop
       switch (shopNum)
       {
       case 1:
-        shop = new ShopWeapon();
+        new ShopWeapon();
       case 2:
-        shop = new ShopArmor();
+        new ShopArmor();
       case 3:
-        shop = new ShopAccessory();
+        new ShopAccessory();
       default:
         return;
       }      
