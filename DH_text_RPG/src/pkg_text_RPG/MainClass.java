@@ -23,7 +23,7 @@ public class MainClass
       switch (chooseNum)
       {
       case 1:
-        event.dungeon();
+        event.dungeon(player);
         break;
       case 2:
         shop = new Shop(sc);

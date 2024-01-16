@@ -33,20 +33,27 @@ public class Event
   public void battle(Player player, Monster monster)
   {
     
+
   }
-  
-  public void battleGroup(Player player, GroupMonster grmonster)
-  {
-    
-  }
-  
+
   public void gameStart(Scanner sc)
   {
 
   }
   
-  public void dungeon()
+  public void dungeon(Player player)
   {
-    
+    Monster monster = new Monster();
+    monster.CreateMonster(player);
+  }
+  
+  public void playerDeath(Player player)
+  {
+     System.out.println("사망했습니다. 경험치와 골드를 일정량 잃습니다.");
+     player.setiGold(player.getiGold() - (player.getiGold() * (int)0.2));
+     player.setiExp(player.getiExp() - (player.getiExp() * (int)0.2));
+     System.out.println("체력과 마나를 회복합니다.");
+     player.setiHp(player.getiMaxHp());
+     player.setiMp(player.getiMaxMp());
   }
 }
