@@ -14,4 +14,15 @@ public class MonEZ extends Monster
     super(iHp, iAtk, iExp, iGold, iMaxHp);
     this.Name = Name;
   }
+
+  public String getName()
+  {
+    return Name;
+  }
+  public void setName(String name)
+  {
+    Name = name;
+  }
+  
+  
 }

@@ -1,9 +1,14 @@
 package pkg_text_RPG;
 
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Event
 {  
+  Timer timer = new Timer();
+  
+  
   public void levelUp(Player player)
   {
     if(player.getiExp() >= player.getiMaxExp())
@@ -44,7 +49,28 @@ public class Event
   public void dungeon(Player player)
   {
     Monster monster = new Monster();
-    monster.CreateMonster(player);
+    TimerTask timertask = new TimerTask()
+    {
+      @Override
+      public void run()
+      {
+        int iDice = (int)(Math.random() * 100) + 1;
+        
+        if(iDice <= 80)
+        {
+          System.out.println("던전 탐험 중..." + "경험치 1 획득..." + "골드 1 획득...");
+          player.setiExp(player.getiExp() + 1);
+          player.setiGold(player.getiGold() + 1);
+          player.PlayerInfo();
+        }
+        else
+        {
+          timer.cancel();
+          monster.CreateMonster(player);
+        }
+      }
+    };
+    timer.schedule(timertask, 0, 5000);
   }
   
   public void playerDeath(Player player)

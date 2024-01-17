@@ -1,9 +1,12 @@
 package pkg_text_RPG;
 
+import java.util.List;
+import java.util.Map;
+
 public class Player
 {
-  private int iHp, iMp, iAtk, iDef,iLevel, iExp, iGold, iAvoid ,iMaxHp, iMaxMp, iMaxExp;
-  public String[] arrInventory, arrSkill, arrEquip;
+  private int iHp, iMp, iAtk, iDef, iLevel, iExp, iGold, iAvoid ,iMaxHp, iMaxMp, iMaxExp;
+  private List<Map<String, Object>> mSkill, mInven, mEquip;
   
   public Player()
   {
@@ -23,6 +26,33 @@ public class Player
     this.iMaxHp = iMaxHp;
     this.iMaxMp = iMaxMp;
     this.iMaxExp = iMaxExp;
+  }
+
+  public List<Map<String, Object>> getmSkill()
+  {
+    return mSkill;
+  }
+  public void setmSkill(List<Map<String, Object>> mSkill)
+  {
+    this.mSkill = mSkill;
+  }
+
+  public List<Map<String, Object>> getmInven()
+  {
+    return mInven;
+  }
+  public void setmInven(List<Map<String, Object>> mInven)
+  {
+    this.mInven = mInven;
+  }
+
+  public List<Map<String, Object>> getmEquip()
+  {
+    return mEquip;
+  }
+  public void setmEquip(List<Map<String, Object>> mEquip)
+  {
+    this.mEquip = mEquip;
   }
 
   public int getiHp() {return iHp;}
@@ -50,33 +80,7 @@ public class Player
   public int getiAvoid() {return iAvoid;}
   public void setiAvoid(int iAvoid) {this.iAvoid = iAvoid;}
 
-  public String[] getInvenStatus()
-  {
-    return arrInventory;
-  }
-  public void SetInventory(int idx, String sItemName)
-  {
-    arrInventory[idx] = sItemName;
-  }
   
-  public String[] getEquip()
-  {
-    return arrEquip;
-  }
-  public void setEquip(int idx, String sEquipName)
-  {
-    arrEquip[idx] = sEquipName;
-  }
-
-  public String[] getSkillInfo()
-  {
-    return arrSkill;
-  }
-  public void SetSkill(int idx, String sSkillName)
-  {
-    arrSkill[idx] = sSkillName;
-  }
-
   public int getiMaxHp()
   {
     return iMaxHp;

@@ -9,20 +9,23 @@ public class MainClass
     Event event = new Event();
     Scanner sc = new Scanner(System.in);
     Player player = new Player(50, 30, 10, 5, 1, 0, 0, 0, 50, 30, 30);
-
+    Monster monster = new Monster();
+    
+    System.out.println("------------------------------------------");
+    System.out.println("1.던전입장 2.상점 3.캐릭터정보 4.게임종료");
+    System.out.println("------------------------------------------");
+    
     while(true)
     {
       int chooseNum = 0;
       Shop shop;
-      
-      System.out.println("------------------------------------------");
-      System.out.println("1.던전입장 2.상점 3.캐릭터정보 4.게임종료");
-      System.out.println("------------------------------------------");
+     
       chooseNum = sc.nextInt();
       
       switch (chooseNum)
       {
       case 1:
+        //event.dungeon(player);
         event.dungeon(player);
         break;
       case 2:
