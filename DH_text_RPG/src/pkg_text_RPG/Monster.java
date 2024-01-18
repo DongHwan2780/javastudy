@@ -76,38 +76,19 @@ public class Monster
 
   public void CreateMonster(Player player)
   {
+    System.out.println("!!몬스터 출현!!");
+    
     switch (player.getiLevel())  
     {
     case 1,2,3,4,5:
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
-      System.out.println("------------초급 던전 입장------------");
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
       geneMonster(player);
-    break;
+      break;
     case 6,7,8,9,10:
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
-      System.out.println("------------중급 던전 입장------------");
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
       geneMonster(player);
-    break;
+      break;
     case 11,12,13,14,15:
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
-      System.out.println("------------고급 던전 입장------------");
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
-      System.out.println("--------------------------------------");
       geneMonster(player);
-    break;
+      break;
     default:
       return;
     }

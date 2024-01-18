@@ -35,21 +35,21 @@ public class Customer
   }
   
   
-  public void addToCart(Product product)
+  public void addToCart(Product product) throws RuntimeException
   {
     cart.addProduct(product);
   }
   
-  public void changeCart(int idx, Product product)
+  public void changeCart(int idx, Product product) throws RuntimeException
   {
     cart.changeProduct(idx, product);
   }
-  public void removeCart(int idx)
+  public void removeCart(int idx) throws RuntimeException
   {
     cart.removeProduct(idx);
   }
   
-  public String buy()
+  public String buy() throws RuntimeException
   {
     String receipt = "영수증\n";
     int total = 0;
@@ -61,10 +61,7 @@ public class Customer
       total += product.getPrice();
       
       if(money < total)
-      {
-        System.out.println("금액이 부족합니다");
-        return null;
-      }
+        throw new RuntimeException("금액이 부족합니다");
       
       receipt += product.getName();
       receipt += ".....";
@@ -75,8 +72,6 @@ public class Customer
     money -= total;
     
     receipt += "총 구매액....." + total + "\n";
-    
-    
     
     return receipt;
   }

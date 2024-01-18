@@ -30,64 +30,40 @@ public class Cart
   {
     this.count = count;
   }
+  
   // 물건 담기
-  public void addProduct(Product product)
+  public void addProduct(Product product) throws RuntimeException
   {
-    if(cList.size() == 10)
-    {
-      System.out.println("꽉 찼다");
-      return;
-    }
-    
     if(product != null)
-    {
       cList.add(product);
-    }
     else
-    {
-      System.out.println("물건이 없다");
-      return;
-    }
+      throw new RuntimeException("물건이 없다");
   }
   
   
   // 물건 바꾸기
-  public void changeProduct(int idx, Product product)
+  public void changeProduct(int idx, Product product) throws RuntimeException
   {
     if(cList.size() == 0)
-    {
-      System.out.println("카트가 비어있다");
-      return;
-    }   
+      throw new RuntimeException("카트가 비어있다");
     
     if(product == null)
-    {
-      System.out.println("바꿀 물건이 없다");
-      return;
-    }
+      throw new RuntimeException("물건이 없다");
     
     if(idx < 0 || idx >= cList.size())
-    {
-      System.out.println("물건 번호가 잘못됨");
-      return;
-    }
+      throw new RuntimeException("물건 번호가 잘못됨");
     
     cList.set(idx, product);
   }
   // 물건 빼기
-  public void removeProduct(int idx)
+  public void removeProduct(int idx) throws RuntimeException
   {
     if(cList.size() == 0)
-    {
-      System.out.println("카트가 비어있다");
-      return;
-    }   
+      throw new RuntimeException("카트가 비어있다");
+        
     
     if(idx < 0 || idx >= cList.size())
-    {
-      System.out.println("물건 번호가 잘못됨");
-      return;
-    }
+      throw new RuntimeException("물건 번호가 잘못됨");
     
     cList.remove(idx);
   }
