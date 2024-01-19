@@ -98,6 +98,8 @@ public class Monster
   {
     int iCountMon = (int)(Math.random() * MAX_MONSTER) + 1;
     ezMon = new ArrayList<Monster>();
+    nmMon = new ArrayList<Monster>();
+    hdMon = new ArrayList<Monster>();
     
     switch (player.getiLevel())
     {
@@ -126,7 +128,7 @@ public class Monster
         iGold = (int)(Math.random() * 20) + 10;
         iMaxHp = iHp;
         
-        nmMon.add(new MonEZ("중급", iHp, iAtk, iExp, iGold, iMaxHp));
+        nmMon.add(new MonNM("중급", iHp, iAtk, iExp, iGold, iMaxHp));
       }      
     }
     break;
@@ -140,7 +142,7 @@ public class Monster
         iGold = (int)(Math.random() * 50) + 30;
         iMaxHp = iHp;
         
-        hdMon.add(new MonEZ("고급", iHp, iAtk, iExp, iGold, iMaxHp));
+        hdMon.add(new MonHD("고급", iHp, iAtk, iExp, iGold, iMaxHp));
       }      
     }
     break;

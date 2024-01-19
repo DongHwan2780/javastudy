@@ -190,9 +190,9 @@ public class Class01_String
     // TODO Auto-generated method stub
     //method1();
     //method2();
-    //method7();
+    method7();
     //method15();
-    practice02() ;
+    //practice02() ;
   }
 
   public static void practice01() 

@@ -21,8 +21,8 @@ public class Class03_System
     System.out.println(end - start + "ns");
     
     
-    practice01();
-    practice02();
+    //practice01();
+    //practice02();
     
   }
   
