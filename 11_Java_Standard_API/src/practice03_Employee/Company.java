@@ -44,7 +44,16 @@ public class Company
     else if(empList.isEmpty())
       throw new RuntimeException("사원이 없음");
     
-    empList.remove(idx - 1);
+    //empList.remove(idx - 1);
+    
+    for(int i = 0, size = empList.size(); i < size; i++)
+    {
+      if(empList.get(i).getEmpNo() == idx)
+      {
+        empList.remove(i);
+        break;
+      }
+    }
   }
   
   // 조회
@@ -55,7 +64,13 @@ public class Company
     else if(empList.isEmpty())
       throw new RuntimeException("사원이 없음");
     
-    empList.get(idx - 1).info();
+    //empList.get(idx - 1).info();
+    
+    Employee searchEmp = new Employee(idx, null);
+    for(Employee emp : empList)
+      if(emp.equals(searchEmp))
+        emp.info();
+    
   }
   // 전체조회
   public void searchAll() throws RuntimeException

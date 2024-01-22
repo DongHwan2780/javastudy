@@ -1,6 +1,7 @@
 package practice02_Lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,8 +19,14 @@ public class Lotto {
     Scanner sc = new Scanner(System.in);
     
     /* 여기에 구현 */
+    System.out.println("돈을 내세요 >>>");
+    int money = sc.nextInt();
     
-    return 0;  // 리턴 값 바꿀 것
+    if(money < 1000 || money > 100000)
+      throw new RuntimeException("로또 구매 실패");
+    else
+      return money = money - (money % 1000);
+      // 리턴 값 바꿀 것
     
   }
   
@@ -29,6 +36,7 @@ public class Lotto {
    * 5게임씩 끊어서 생성된 로또 번호를 출력한다.<br>
    * @param money   로또 구매 비용
    */
+  // 1~45
   public List<String> generateLotto(int money) {
     
     /*
@@ -57,7 +65,40 @@ public class Lotto {
      */
     
     List<String> papers = new ArrayList<String>();
+    List<Integer> nums = new ArrayList<Integer>();
+    String sb = new String();
+    int cnt = money / 1000;
     
+    for(int i = 0; i < cnt; i++)
+    {
+      for(int j = 0; j < 6; j++)
+        nums.add((int)(Math.random() * 45) + 1);
+      
+      for(int a = 0; a < nums.size(); a++)
+      {
+        for(int b = 0; b < a; b++)
+        {
+          if(nums.get(a)== nums.get(b))
+          {
+            nums.set(a, (int)(Math.random() * 45) + 1);
+            a--;
+          }
+        }
+      }
+      
+      Collections.sort(nums);
+      
+      for(int j = 0; j < nums.size(); j++)
+        sb += (nums.get(j) + " ");
+        
+        if( (i + 1) % 5 == 0)
+          papers.add((i + 1) + ": " + sb + "\n");
+        else
+          papers.add((i + 1) + ": " + sb );
+        
+        sb = "";
+        nums.clear();
+    }
     /* 여기에 구현 */
        
     return papers;

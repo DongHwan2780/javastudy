@@ -4,7 +4,11 @@ import java.nio.charset.Charset;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -219,7 +223,32 @@ public class MainClass
     // ...
     // 입력 >>> 4500
     // 정답입니다. 총 5번만에 성공했습니다.
+    int cnt = 0;
+    int rand  = (int)(Math.random() * 10000) + 1;
+    Scanner sc = new Scanner(System.in);
+    int tmp = 0;
     
+    while(true)
+    {
+      System.out.println("입력 >>>");
+      tmp = sc.nextInt();
+      
+      if(tmp > rand)
+      {
+        System.out.println("Down!");
+        cnt++;
+      }
+      else if(tmp < rand)
+      {
+        System.out.println("Up!");
+        cnt++;
+      }
+      else
+      {
+        System.out.println("정답입니다. 총" + cnt + "번만에 성공했습니다.");
+        break;
+      }
+    }
     
   }
 
@@ -238,40 +267,96 @@ public class MainClass
     // 8 : ####### 7
     // 9 : ########### 11
     
+    int[] arr = new int[10];
+    
+    for(int i = 0; i < 100; i++)
+    {
+      int rand = (int)(Math.random() * 10);
+      arr[rand] += 1;
+    }
+    
+    for(int i = 0, size = arr.length; i < size; i++)
+    {
+      int cnt2 = arr[i];
+      System.out.print(i + ":");
+      for(int j = 0, size2 = arr[i]; j < size2; j++)
+        System.out.print("#");
+      
+      System.out.print(" " + cnt2);
+      System.out.println();
+    }
     
   }
   
   public static void method9() {
     
-    // 5 x 5 숫자 빙고판 자동 생성
-    //
-    // 지시사항)
-    //   1. 1 ~ 25 사이 정수를 2차원 배열 bingo 에 순차적으로 넣는다.
-    //      1  2  3  4  5
-    //      6  7  8  9 10
-    //     11 12 13 14 15
-    //     16 17 18 19 20
-    //     21 22 23 24 25
-    //   2. 25번 서로 섞는다.
-    //      순차적으로        랜덤하게
-    //      모든요소접근      접근
-    //      ----------------------------
-    //      bingo[0][0]  <->  bingo[1][4]
-    //      bingo[0][1]  <->  bingo[0][2]
-    //      bingo[0][2]  <->  bingo[2][1]
-    //      ...
-    //      bingo[4][4]  <->  bingo[3][1]
-    //
-    // 실행예시)
-    //  10  9  4 25  2
-    //  15  3 13 21  1
-    //  14 20 11 19  6
-    //   8 17  5 12  7
-    //  16 22 18 24 23
+    int[][] bingo = new int[5][5];
+    List<Integer> iList = new ArrayList<Integer>();
+    int max = 25;
     
+    for(int i = 0, size = bingo.length; i < size; i++)
+    {
+      for(int j = 0, size2 = bingo[0].length ; j < size2; j++)
+      {
+        bingo[i][j] = (i * size) + (j + 1);
+        iList.add(bingo[i][j]);
+      }
+    }
+    
+    for(int i = 0, size = bingo.length; i < size; i++)
+    {      
+      for(int j = 0, size2 = bingo[0].length ; j < size2; j++)
+      {
+        int rand = (int)(Math.random() * max);
+        bingo[i][j] =  iList.get(rand);
+        iList.remove(rand);
+        max--;
+      }
+    }
+    
+    
+    for(int i = 0, size = bingo.length; i < size; i++)
+    {
+      for(int j = 0, size2 = bingo[0].length ; j < size2; j++)
+      {
+        System.out.print(bingo[i][j] + "  ");
+      }
+      System.out.println();
+    }
   }
   
+  public static void method10()
+  {
+//    Scanner sc = new Scanner(System.in);
+//    
+//    /* 여기에 구현 */
+//    int money = sc.nextInt();
+//    money = money - (money % 1000);
+    List<String> papers = new ArrayList<String>();
+    List<Integer> in = new ArrayList<Integer>();
+    
+    for(int j = 0; j < 6; j++)
+     {
+       int lottoNum = (int)(Math.random() * 45) + 1;
+       papers.add(String.valueOf(lottoNum));
+       in.add(lottoNum);
+       
+     }
+    
+    Collections.sort(in);
+    Collections.sort(papers);
+    
+    for(int i = 0; i < in.size(); i++)
+      System.out.print(in.get(i) + " ");
+    
+    System.out.println();
+    
+    for(int i = 0; i < papers.size(); i++)
+      System.out.print(papers.get(i) + " ");
+    
+    //System.out.println("머임");
 
+  }
 
   public static void main(String[] args)
   {
@@ -284,7 +369,11 @@ public class MainClass
     
     //method4();
     //method5();
-    method6();
+    //method6();
+    //method7();
+    //method8();
+    //method9();
+    method10();
   }
 
 }

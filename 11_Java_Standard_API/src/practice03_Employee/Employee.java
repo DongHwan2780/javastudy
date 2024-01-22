@@ -1,5 +1,7 @@
 package practice03_Employee;
 
+import java.util.Objects;
+
 public class Employee
 {
   private int empNo;
@@ -37,4 +39,23 @@ public class Employee
     System.out.println("사원번호  :" + this.empNo);
     System.out.println("이름  :" + this.name);
   }
+  @Override
+  public int hashCode()
+  {
+    return Objects.hash(empNo);
+  }
+  @Override
+  public boolean equals(Object obj)
+  {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Employee other = (Employee) obj;
+    return empNo == other.empNo;
+  }
+  
+  
 }
