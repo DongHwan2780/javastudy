@@ -104,53 +104,53 @@ public class Monster
     
     switch (player.getiLevel())
     {
-    case 1,2,3,4,5:
-    {
-      for(int i = 0; i < iCountMon; i++)
+      case 1,2,3,4,5:
       {
-        iHp = (int)(Math.random() * 30) + 15;
-        iAtk = (int)(Math.random() * 5) + 1;
-        iExp = (int)(Math.random() * 10) + 1;
-        iGold = (int)(Math.random() * 10) + 1;
-        iMaxHp = iHp;
-        
-        ezMon.add(new MonEZ("초급", iHp, iAtk, iExp, iGold, iMaxHp));
+        for(int i = 0; i < iCountMon; i++)
+        {
+          iHp = (int)(Math.random() * 30) + 15;
+          iAtk = (int)(Math.random() * 5) + 1;
+          iExp = (int)(Math.random() * 10) + 1;
+          iGold = (int)(Math.random() * 10) + 1;
+          iMaxHp = iHp;
+          
+          ezMon.add(new MonEZ("초급", iHp, iAtk, iExp, iGold, iMaxHp));
+        }
+        event.battle(player, this);
       }
-      event.battle(player, this);
-    }
-    break;
-    case 6,7,8,9,10:
-    {
-      for(int i = 0; i < iCountMon; i++)
+      break;
+      case 6,7,8,9,10:
       {
-        iHp = (int)(Math.random() * 50) + 30;
-        iAtk = (int)(Math.random() * 15) + 10;
-        iExp = (int)(Math.random() * 20) + 10;
-        iGold = (int)(Math.random() * 20) + 10;
-        iMaxHp = iHp;
-        
-        nmMon.add(new MonNM("중급", iHp, iAtk, iExp, iGold, iMaxHp));
-      }      
-      event.battle(player, this);
-    }
-    break;
-    case 11,12,13,14,15:
-    {
-      for(int i = 0; i < iCountMon; i++)
+        for(int i = 0; i < iCountMon; i++)
+        {
+          iHp = (int)(Math.random() * 50) + 30;
+          iAtk = (int)(Math.random() * 15) + 10;
+          iExp = (int)(Math.random() * 20) + 10;
+          iGold = (int)(Math.random() * 20) + 10;
+          iMaxHp = iHp;
+          
+          nmMon.add(new MonNM("중급", iHp, iAtk, iExp, iGold, iMaxHp));
+        }      
+        event.battle(player, this);
+      }
+      break;
+      case 11,12,13,14,15:
       {
-        iHp = (int)(Math.random() * 100) + 50;
-        iAtk = (int)(Math.random() * 50) + 30;
-        iExp = (int)(Math.random() * 50) + 30;
-        iGold = (int)(Math.random() * 50) + 30;
-        iMaxHp = iHp;
-        
-        hdMon.add(new MonHD("고급", iHp, iAtk, iExp, iGold, iMaxHp));
-      }      
-      event.battle(player, this);
-    }
-    break;
-    default:
-      return;
+        for(int i = 0; i < iCountMon; i++)
+        {
+          iHp = (int)(Math.random() * 100) + 50;
+          iAtk = (int)(Math.random() * 50) + 30;
+          iExp = (int)(Math.random() * 50) + 30;
+          iGold = (int)(Math.random() * 50) + 30;
+          iMaxHp = iHp;
+          
+          hdMon.add(new MonHD("고급", iHp, iAtk, iExp, iGold, iMaxHp));
+        }      
+        event.battle(player, this);
+      }
+      break;
+      default:
+        return;
     }
   }
 
