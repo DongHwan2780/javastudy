@@ -100,6 +100,7 @@ public class Monster
     ezMon = new ArrayList<Monster>();
     nmMon = new ArrayList<Monster>();
     hdMon = new ArrayList<Monster>();
+    Event event = new Event();
     
     switch (player.getiLevel())
     {
@@ -115,7 +116,7 @@ public class Monster
         
         ezMon.add(new MonEZ("초급", iHp, iAtk, iExp, iGold, iMaxHp));
       }
-      showBattleInfo(player);
+      event.battle(player, this);
     }
     break;
     case 6,7,8,9,10:
@@ -130,6 +131,7 @@ public class Monster
         
         nmMon.add(new MonNM("중급", iHp, iAtk, iExp, iGold, iMaxHp));
       }      
+      event.battle(player, this);
     }
     break;
     case 11,12,13,14,15:
@@ -144,6 +146,7 @@ public class Monster
         
         hdMon.add(new MonHD("고급", iHp, iAtk, iExp, iGold, iMaxHp));
       }      
+      event.battle(player, this);
     }
     break;
     default:
@@ -151,7 +154,7 @@ public class Monster
     }
   }
 
-  public void showBattleInfo(Player player)
+  public void showBattleInfo(Player player, int battlecnt)
   {
     System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
     System.out.println("--------------몬스터정보--------------");      
@@ -163,7 +166,7 @@ public class Monster
     }
     System.out.println();
     
-    if(true)        // 공격자 알려줄거
+    if(battlecnt == 1)        // 공격자 알려줄거
       System.out.println("↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑공격↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑");
     else
       System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓공격↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
@@ -179,5 +182,29 @@ public class Monster
     System.out.print("공격력: " + player.getiAtk() + "  ");
     System.out.println("방어력: " + player.getiDef());
     System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+  }
+  public List<Monster> getEzMon()
+  {
+    return ezMon;
+  }
+  public void setEzMon(List<Monster> ezMon)
+  {
+    this.ezMon = ezMon;
+  }
+  public List<Monster> getNmMon()
+  {
+    return nmMon;
+  }
+  public void setNmMon(List<Monster> nmMon)
+  {
+    this.nmMon = nmMon;
+  }
+  public List<Monster> getHdMon()
+  {
+    return hdMon;
+  }
+  public void setHdMon(List<Monster> hdMon)
+  {
+    this.hdMon = hdMon;
   }
 }

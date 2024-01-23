@@ -37,7 +37,37 @@ public class Event
   
   public void battle(Player player, Monster monster)
   {
+    Scanner sc = new Scanner(System.in);
+    int battleCnt = 1;
+    int targetNum = 0;
     
+    while(monster.getEzMon().size() > 0) 
+    {
+      monster.showBattleInfo(player, (monster.getEzMon().size() + 1) % battleCnt);
+      
+      if(monster.getEzMon().size() > 1)
+      {
+        System.out.println("몇 번째 몬스터를 공격할까요?");
+        targetNum = sc.nextInt() - 1;
+        System.out.println("플레이어가 " + targetNum + "번째 몬스터 공격!");
+        monster.getEzMon().get(targetNum).setiHp(monster.getEzMon().get(targetNum).getiHp() - player.getiAtk());
+        battleCnt++;
+      }
+      else
+      {
+        System.out.println("플레이어가 공격!");
+        monster.getEzMon().get(targetNum).setiHp(monster.getEzMon().get(targetNum).getiHp() - player.getiAtk());       
+        battleCnt++;
+      }
+      
+      for(int i = 0, size = monster.getEzMon().size(); i < size; i++)
+      {
+        player.setiHp(player.getiHp() - monster.getEzMon().get(i).getiAtk());
+      }
+      
+      
+      
+    }
 
   }
 
@@ -61,7 +91,7 @@ public class Event
           System.out.println("던전 탐험 중..." + "경험치 1 획득..." + "골드 1 획득...");
           player.setiExp(player.getiExp() + 1);
           player.setiGold(player.getiGold() + 1);
-          player.PlayerInfo();
+          //player.PlayerInfo();
         }
         else
         {

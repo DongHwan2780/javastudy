@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 import java.util.Arrays;
@@ -216,7 +217,6 @@ public class MainClass
       
       // 객체 출력 스트림 생성
       out = new ObjectOutputStream(new FileOutputStream(file));
-      
       // 출력할 객체
       Employee employee = new Employee(1, "홍길동");
       List<Employee> employees = Arrays.asList(new Employee(2, "홍길순"), new Employee(3, "홍순자"));

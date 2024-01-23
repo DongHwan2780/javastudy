@@ -1,12 +1,14 @@
 package pkg_text_RPG;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class Player
+public class Player implements Serializable
 {
   private int iHp, iMp, iAtk, iDef, iLevel, iExp, iGold, iAvoid ,iMaxHp, iMaxMp, iMaxExp;
   private List<Map<String, Object>> mSkill, mInven, mEquip;
+  private static final long serialVersionUID = 0000000000001L;
   
   public Player()
   {
@@ -26,6 +28,10 @@ public class Player
     this.iMaxHp = iMaxHp;
     this.iMaxMp = iMaxMp;
     this.iMaxExp = iMaxExp;
+    
+    this.mSkill = null;
+    this.mInven = null;
+    this.mEquip = null;
   }
 
   public List<Map<String, Object>> getmSkill()
@@ -121,5 +127,10 @@ public class Player
     System.out.println("회피율: " + this.iAvoid);
     System.out.println("소지금: " + this.iGold);
     System.out.println("----------------------------------------");
+  }
+
+  public Player getPlayer()
+  {
+    return this;
   }
 }
