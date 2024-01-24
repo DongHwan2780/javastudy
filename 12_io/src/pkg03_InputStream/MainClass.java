@@ -1,10 +1,15 @@
 package pkg03_InputStream;
 
 import java.io.BufferedInputStream;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;import java.io.InputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.List;
+
+import pkg02_OutputStream.Employee;
 
 public class MainClass
 {
@@ -19,8 +24,30 @@ public class MainClass
   
   
   /*
-   *  java.io.BufferedInputStream
+   * java.io.BufferedInputStream
+   * 1. 버퍼링을 지원하는 바이트 입력 스트림이다.
+   * 2. 보조 스트림이므로 메인 스트림과 함께 사용해야 한다.
+   * 3. 버퍼링을 지원하므로 입력 속도가 향상된다.
+   */
+  
+  /*
+   * java.io.DataInputStream
+   * 1. 자바 변수로 구성된 데이터를 읽는 바이트 입력 스트림
+   * 2. 보조 스트림이므로 메인 스트림과 함께 사용해야 함
+   * 3. 타입 별로 전용 메소드가 존재
+   * 
    * */
+  
+  /*
+   * java.io.ObjectInputStream
+   * 1. 객체로 구성된 데이터를 읽는 바이트 입력 스트림
+   * 2. 보조 스트림이므로 메인 스트림과 함께 사용해야 함
+   * 3. 읽은 객체는 Object 타입으로 반환되므로 객체 타입으로 캐스팅해서 사용해야 함
+   *  -> ClassNotFoundException 발생 가능
+   * */
+  
+  
+  
   public static void method1()
   {
     File dir = new File("\\storage");
@@ -135,11 +162,67 @@ public class MainClass
     }
   }
   
+  public static void method4()
+  {
+    File dir = new File("\\storage");
+    File file = new File(dir, "sample6.dat");
+    DataInputStream dis = null;
+    
+    try
+    {
+      dis = new DataInputStream(new FileInputStream(file));
+      
+      String name = dis.readUTF();
+      int age = dis.readInt();
+      double height = dis.readDouble();
+      boolean isAdult = dis.readBoolean();
+      char gender = dis.readChar();
+      
+      dis.close();
+      System.out.println(name);
+      System.out.println(age);
+      System.out.println(height);
+      System.out.println(isAdult);
+      System.out.println(gender);
+      
+    }catch(IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+  
+  public static void method5()
+  {
+    File dir = new File("\\storage");
+    File file = new File(dir, "sample10.dat");
+    ObjectInputStream ois = null;
+    
+    try
+    {
+      ois = new ObjectInputStream(new FileInputStream(file));
+      
+      Employee emp1 = (Employee)ois.readObject();
+      List<Employee> emp2 = (List<Employee>)ois.readObject();
+      
+      System.out.println(emp1.toString());
+      System.out.println(emp2.get(0));
+      System.out.println(emp2.get(1));
+      ois.close();
+      
+    }catch(ClassNotFoundException | IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+  
+  
   public static void main(String[] args)
   {
     // TODO Auto-generated method stub
     //method1();
-    method2();
+    //method2();
+    //method4();
+    method5();
   }
 
 }

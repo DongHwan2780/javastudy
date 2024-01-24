@@ -11,20 +11,15 @@ public class MainClass
 {    
   public static void main(String[] args)
   {
-    // TODO Auto-generated method stub
     Event event = new Event();
     Scanner sc = new Scanner(System.in);
-    
+    Shop shop = null;
     Player player = load("\\GDJ77\\javastudy\\DH_text_RPG\\Data\\PlayerData.dat");
     
     while(true)
     {
       consoleMain();
-      int chooseNum = 0;
-      Shop shop;
-      chooseNum = sc.nextInt();
-      
-      switch (chooseNum)
+      switch (sc.nextInt())
       {
       case 1:
         event.dungeon(player);

@@ -110,13 +110,12 @@ public class Event
   {
     Monster monster = new Monster();
     Timer timer = new Timer();
-    TimerTask timertask = new TimerTask()
+    int iDice = 0;
+    TimerTask tt = new TimerTask()
     {
       @Override
       public void run()
       {
-        int iDice = (int)(Math.random() * 100) + 1;
-        
         if(iDice <= 80)
         {
           System.out.println("던전 탐험 중..." + "경험치 1 획득..." + "골드 1 획득...");
@@ -130,7 +129,22 @@ public class Event
         }
       }
     };
-    timer.schedule(timertask, 0, 5000);
+    timer.schedule(tt, 0, 5000);
+        
+//    while(iDice <= 80)
+//    {
+//      iDice = (int)(Math.random() * 100) + 1;
+//      
+//      if(iDice > 80) 
+//      {
+//        monster.CreateMonster(player);
+//        break;
+//      }
+//      
+//      System.out.println("던전 탐험 중..." + "경험치 1 획득..." + "골드 1 획득...");
+//      player.setiExp(player.getiExp() + 1);
+//      player.setiGold(player.getiGold() + 1);
+//    }
   }
   
   public void playerDeath(Player player)
